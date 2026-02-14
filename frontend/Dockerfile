@@ -4,8 +4,8 @@ FROM node:20 AS builder
 WORKDIR /app
 
 # Copy package files
-COPY package*.json ./
-RUN npm ci
+COPY package.json ./
+RUN npm install
 
 # Copy source and build
 COPY . .
