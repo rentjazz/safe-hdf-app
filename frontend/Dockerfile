@@ -9,7 +9,7 @@ RUN npm install
 
 # Copy source and build
 COPY . .
-RUN npm run build
+RUN npm run build 2>&1 || (echo "Build failed with errors above" && exit 1)
 
 # Production stage
 FROM nginx:alpine
