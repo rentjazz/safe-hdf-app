@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: safe-hdf-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/data
+    environment:
+      - DATABASE_URL=sqlite:///data/safe_hdf.db
+    restart: unless-stopped
+    networks:
+      - safe-hdf-network
+
+  frontend:
+    build: ./frontend
+    container_name: safe-hdf-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - safe-hdf-network
+
+networks:
+  safe-hdf-network:
+    driver: bridge
