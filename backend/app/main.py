@@ -4,7 +4,7 @@ from fastapi.responses import JSONResponse
 from contextlib import asynccontextmanager
 
 from app.database import init_db
-from app.routers import tasks, stock, appointments, calendar
+from app.routers import tasks, stock, appointments, calendar, sheets
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -35,6 +35,7 @@ app.include_router(tasks.router)
 app.include_router(stock.router)
 app.include_router(appointments.router)
 app.include_router(calendar.router)
+app.include_router(sheets.router)
 
 @app.get("/")
 def root():

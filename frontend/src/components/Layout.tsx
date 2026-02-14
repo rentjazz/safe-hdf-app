@@ -10,6 +10,7 @@ import {
   X
 } from 'lucide-react';
 import { useState } from 'react';
+import { Logo, LogoWithText } from './Logo';
 
 interface LayoutProps {
   children: ReactNode;
@@ -42,7 +43,7 @@ export function Layout({ children }: LayoutProps) {
         sidebarOpen ? 'translate-x-0' : '-translate-x-full'
       }`}>
         <div className="flex items-center justify-between h-16 px-4 bg-slate-950">
-          <span className="text-xl font-bold text-white">Safe HDF</span>
+          <LogoWithText />
           <button onClick={() => setSidebarOpen(false)} className="text-slate-400">
             <X className="w-6 h-6" />
           </button>
@@ -72,10 +73,10 @@ export function Layout({ children }: LayoutProps) {
 
       {/* Desktop sidebar */}
       <div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-50 lg:block lg:w-64 lg:bg-slate-900">
-        <div className="flex items-center h-16 px-6 bg-slate-950">
-          <span className="text-xl font-bold text-white">Safe HDF</span>
+        <div className="flex items-center h-16 px-4 bg-slate-950">
+          <LogoWithText />
         </div>
-        <nav className="mt-4 px-3">
+        <nav className="mt-4 px-2">
           {navigation.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.href;
@@ -107,7 +108,9 @@ export function Layout({ children }: LayoutProps) {
           >
             <Menu className="w-6 h-6" />
           </button>
-          <span className="ml-3 text-lg font-semibold">Safe HDF</span>
+          <div className="ml-3">
+            <LogoWithText />
+          </div>
         </div>
 
         {/* Page content */}
