@@ -31,9 +31,21 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+      },
+      devOptions: {
+        enabled: false
       }
     })
   ],
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
+  },
   server: {
     port: 5173,
     proxy: {
